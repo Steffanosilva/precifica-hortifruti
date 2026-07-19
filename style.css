@@ -497,13 +497,13 @@ body {
     }
 
     .grid-header {
-        display: none; /* Esconde o cabeçalho no mobile */
+        display: none;
     }
 
-    /* 1. Transforma o card num Grid de 2 colunas */
+    /* Estrutura principal do Card */
     .product-item {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr; /* Divide exatamente ao meio */
         gap: 0;
         padding: 0;
         border-radius: 16px;
@@ -511,12 +511,12 @@ body {
         border: 1px solid #edf2f7;
         margin-bottom: 16px;
         align-items: stretch;
-        overflow: hidden; /* Garante que as bordas sigam o arredondamento */
+        overflow: hidden;
     }
 
-    /* 2. Cabeçalho (Nome do Produto) */
+    /* 1. Nome do Produto (Topo - Ocupa tudo) */
     .product-item > div:nth-child(1) {
-        grid-column: 1;
+        grid-column: 1 / -1; /* Força a ocupar da coluna 1 até o final */
         padding: 14px 16px;
         display: flex;
         align-items: center;
@@ -530,23 +530,7 @@ body {
         justify-content: flex-start;
     }
 
-    /* 3. Botão Excluir (Topo Direito) */
-    .product-item > div:nth-child(5) {
-        grid-column: 2;
-        padding: 14px 16px;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        border-bottom: 1px solid #f1f5f9;
-    }
-
-    .product-item .delete-btn {
-        margin: 0;
-        width: 36px;
-        height: 36px;
-    }
-
-    /* 4. Quantidade (Linha do Meio, Coluna da Esquerda) */
+    /* 2. Quantidade (Meio - Esquerda) */
     .product-item > div:nth-child(2) {
         grid-column: 1;
         padding: 12px 16px;
@@ -558,7 +542,6 @@ body {
         position: relative;
     }
 
-    /* Injetando o rótulo "Qtde." visualmente */
     .product-item > div:nth-child(2)::before {
         content: "Qtde.";
         font-size: 13px;
@@ -570,7 +553,7 @@ body {
         width: 100%;
         max-width: none;
         text-align: left;
-        padding: 8px 36px 8px 12px; /* Espaço para "un/kg" na direita */
+        padding: 8px 36px 8px 12px;
         margin: 0;
     }
 
@@ -581,7 +564,7 @@ body {
         margin: 0;
     }
 
-    /* 5. Preço Unitário (Linha do Meio, Coluna da Direita) */
+    /* 3. Preço Unitário/Remessa (Meio - Direita) */
     .product-item > div:nth-child(3) {
         grid-column: 2;
         padding: 12px 16px;
@@ -592,7 +575,6 @@ body {
         position: relative;
     }
 
-    /* Injetando o rótulo "Preço Remessa" visualmente */
     .product-item > div:nth-child(3)::before {
         content: "Preço da Remessa";
         font-size: 13px;
@@ -607,16 +589,16 @@ body {
         margin: 0;
     }
 
-    /* 6. Preço Final (Base do Card, Ocupa 100% da largura) */
+    /* 4. Preço Final (Base - Esquerda) */
     .product-item > div:nth-child(4) {
-        grid-column: 1 / -1; /* Ocupa da coluna 1 até a última */
-        padding: 14px 16px;
+        grid-column: 1;
+        padding: 12px 16px;
         display: flex;
         flex-direction: column;
         gap: 8px;
+        justify-content: center;
     }
 
-    /* Injetando o rótulo "Total:" visualmente */
     .product-item > div:nth-child(4)::before {
         content: "Total:";
         font-size: 13px;
@@ -627,20 +609,40 @@ body {
     .product-item .final-price {
         text-align: left;
         width: 100%;
-        font-size: 18px;
-        padding: 10px 16px;
+        font-size: 16px; /* Reduzido levemente */
+        padding: 8px 12px;
         margin: 0;
         display: block;
         box-sizing: border-box;
-        border-radius: 12px; /* Deixa a pílula de resultado levemente mais quadrada para combinar */
+        border-radius: 12px;
     }
 
     .product-item .final-price.empty {
         width: auto;
-        min-width: 80px;
+        min-width: 60px;
     }
 
-    /* --- Demais Ajustes Gerais do Header e Form (Alinhando à esquerda) --- */
+    /* 5. Botão Excluir (Base - Direita) */
+    .product-item > div:nth-child(5) {
+        grid-column: 2;
+        padding: 12px 16px;
+        display: flex;
+        justify-content: flex-end; /* Empurra para a direita */
+        align-items: flex-end;     /* Alinha no fundo, ao lado da pílula do total */
+    }
+
+    .product-item .delete-btn {
+        margin: 0;
+        width: 36px;
+        height: 36px;
+        opacity: 0.7; /* Deixa a lixeira mais discreta */
+    }
+    
+    .product-item .delete-btn:hover {
+        opacity: 1; /* Volta a cor forte quando clica/toca */
+    }
+
+    /* --- Demais Ajustes Gerais --- */
     .header {
         flex-direction: column;
         align-items: stretch;
@@ -697,6 +699,24 @@ body {
     .footer-note {
         text-align: left;
         align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 20px;
+    }
+    .header h1 .badge {
+        font-size: 9px;
+        padding: 0 8px;
+    }
+    .margin-control input {
+        width: 56px;
+        font-size: 14px;
+    }
+    .app-container {
+        padding: 14px 12px 20px;
+        border-radius: 18px;
     }
 }
 
