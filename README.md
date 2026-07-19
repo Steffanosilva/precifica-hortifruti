@@ -24,12 +24,11 @@ Sistema web simples e direto para calcular o preço final de venda de produtos, 
 
 ## Como usar
 
-1. Clone ou baixe este repositório.
-2. Abra o arquivo `index.html` no seu navegador preferido (não é necessário servidor).
-3. Os produtos já vêm cadastrados com seus pesos padrão.
-4. Digite o preço da remessa no campo correspondente e veja o preço final ser calculado instantaneamente.
-5. Ajuste a margem mestra no topo para alterar o percentual de todos os produtos.
-6. Para adicionar um novo produto, clique em "Adicionar produto", preencha nome, peso e unidade.
+1. Acesse o link para acesso direto ao sistema: https://precifica-hortifruti.vercel.app/
+2. Os produtos já vêm cadastrados com seus pesos padrão.
+3. Digite o preço da remessa no campo correspondente e veja o preço final ser calculado instantaneamente.
+4. Ajuste a margem mestra no topo para alterar o percentual de todos os produtos.
+5. Para adicionar um novo produto, clique em "Adicionar produto", preencha nome, peso e unidade.
 
 
 ## Personalização
