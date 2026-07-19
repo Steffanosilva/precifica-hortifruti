@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Precifica • Sistema Profissional</title>
-	<!-- Favicon -->
-	 <link rel="shortcut icon" href="/assets/apple.png" type="image/x-icon">
-    <!-- Google Fonts: Poppins -->
+    <title>Precifica - Sistema Hortifruti</title>
+	<link rel="shortcut icon" href="/assets/apple.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <!-- CSS próprio -->
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -25,7 +21,7 @@
                 </div>
                 <h1>
                     Precifica
-                    <span class="badge">v2.2</span>
+                    <span class="badge">v2.3</span>
                 </h1>
             </div>
             <div class="margin-control">
@@ -37,14 +33,7 @@
 
         <!-- Lista de produtos -->
         <div class="product-grid" id="productGrid">
-            <div class="grid-header">
-                <span>Produto</span>
-                <span>Peso padrão</span>
-                <span>Preço da remessa (R$)</span>
-                <span>Preço final (R$)</span>
-                <span style="text-align:center;">Ações</span>
-            </div>
-            <!-- Os produtos serão inseridos via JavaScript -->
+            <!-- O cabeçalho da lista será inserido via JS para manter sincronia -->
         </div>
 
         <!-- Rodapé com ações -->
@@ -75,7 +64,6 @@
         </div>
     </div>
 
-    <!-- JavaScript próprio -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

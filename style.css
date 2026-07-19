@@ -489,7 +489,7 @@ body {
     opacity: 0.6;
 }
 
-/* ---------- RESPONSIVIDADE COM CENTRALIZAÇÃO ---------- */
+/* ---------- RESPONSIVIDADE COM ALINHAMENTO PROFISSIONAL ---------- */
 @media (max-width: 860px) {
     .app-container {
         padding: 20px 16px 28px;
@@ -497,83 +497,170 @@ body {
     }
 
     .grid-header {
-        display: none;
+        display: none; /* Esconde o cabeçalho no mobile */
     }
 
+    /* 1. Transforma o card num Grid de 2 colunas */
     .product-item {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 18px 16px;
-        border-radius: 18px;
-        background: #fafcff;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        padding: 0;
+        border-radius: 16px;
+        background: #ffffff;
         border: 1px solid #edf2f7;
-        margin-bottom: 4px;
-        text-align: center;
-        justify-items: center;
+        margin-bottom: 16px;
+        align-items: stretch;
+        overflow: hidden; /* Garante que as bordas sigam o arredondamento */
+    }
+
+    /* 2. Cabeçalho (Nome do Produto) */
+    .product-item > div:nth-child(1) {
+        grid-column: 1;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #f1f5f9;
     }
 
     .product-item .name {
-        font-size: 17px;
-        justify-content: center;
+        font-size: 16px;
+        font-weight: 500;
         width: 100%;
+        justify-content: flex-start;
     }
 
-    .product-item .weight-input,
-    .product-item .price-input {
-        width: 100%;
-        max-width: 200px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .product-item .price-input {
-        text-align: center;
-    }
-
-    .product-item .final-price {
-        text-align: center;
-        width: fit-content;
-        margin: 0 auto;
-        font-size: 18px;
-        padding: 6px 28px;
-        min-width: 120px;
+    /* 3. Botão Excluir (Topo Direito) */
+    .product-item > div:nth-child(5) {
+        grid-column: 2;
+        padding: 14px 16px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border-bottom: 1px solid #f1f5f9;
     }
 
     .product-item .delete-btn {
-        margin: 0 auto;
-        width: 40px;
-        height: 40px;
+        margin: 0;
+        width: 36px;
+        height: 36px;
+    }
+
+    /* 4. Quantidade (Linha do Meio, Coluna da Esquerda) */
+    .product-item > div:nth-child(2) {
+        grid-column: 1;
+        padding: 12px 16px;
+        border-right: 1px solid #f1f5f9;
+        border-bottom: 1px solid #f1f5f9;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        position: relative;
+    }
+
+    /* Injetando o rótulo "Qtde." visualmente */
+    .product-item > div:nth-child(2)::before {
+        content: "Qtde.";
+        font-size: 13px;
+        color: #0f172a;
+        font-weight: 400;
+    }
+
+    .product-item .weight-input {
+        width: 100%;
+        max-width: none;
+        text-align: left;
+        padding: 8px 36px 8px 12px; /* Espaço para "un/kg" na direita */
+        margin: 0;
     }
 
     .product-item .weight-unit {
-        display: inline-block;
-        margin-left: 4px;
+        position: absolute;
+        right: 28px;
+        bottom: 21px;
+        margin: 0;
     }
 
+    /* 5. Preço Unitário (Linha do Meio, Coluna da Direita) */
+    .product-item > div:nth-child(3) {
+        grid-column: 2;
+        padding: 12px 16px;
+        border-bottom: 1px solid #f1f5f9;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        position: relative;
+    }
+
+    /* Injetando o rótulo "Preço Remessa" visualmente */
+    .product-item > div:nth-child(3)::before {
+        content: "Preço da Remessa";
+        font-size: 13px;
+        color: #0f172a;
+        font-weight: 400;
+    }
+
+    .product-item .price-input {
+        width: 100%;
+        max-width: none;
+        text-align: left;
+        margin: 0;
+    }
+
+    /* 6. Preço Final (Base do Card, Ocupa 100% da largura) */
+    .product-item > div:nth-child(4) {
+        grid-column: 1 / -1; /* Ocupa da coluna 1 até a última */
+        padding: 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* Injetando o rótulo "Total:" visualmente */
+    .product-item > div:nth-child(4)::before {
+        content: "Total:";
+        font-size: 13px;
+        color: #0f172a;
+        font-weight: 400;
+    }
+
+    .product-item .final-price {
+        text-align: left;
+        width: 100%;
+        font-size: 18px;
+        padding: 10px 16px;
+        margin: 0;
+        display: block;
+        box-sizing: border-box;
+        border-radius: 12px; /* Deixa a pílula de resultado levemente mais quadrada para combinar */
+    }
+
+    .product-item .final-price.empty {
+        width: auto;
+        min-width: 80px;
+    }
+
+    /* --- Demais Ajustes Gerais do Header e Form (Alinhando à esquerda) --- */
     .header {
         flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        text-align: center;
+        align-items: stretch;
+        gap: 16px;
+        text-align: left;
     }
 
     .header-left {
-        justify-content: center;
-        width: 100%;
+        justify-content: flex-start;
     }
 
     .margin-control {
-        justify-content: center;
-        padding: 6px 16px;
-        flex-wrap: wrap;
+        justify-content: space-between;
         width: 100%;
-        max-width: 300px;
+        max-width: none;
     }
 
     .footer-actions {
-        justify-content: center;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         width: 100%;
     }
 
@@ -584,19 +671,17 @@ body {
 
     .add-product-form {
         max-width: 100%;
-        padding: 12px 14px;
-        border-radius: 40px;
+        padding: 16px;
+        border-radius: 24px;
         flex-direction: column;
         align-items: stretch;
-        gap: 8px;
+        gap: 12px;
     }
 
     .add-product-form input,
     .add-product-form select {
-        flex: 1 1 auto;
         width: 100%;
-        min-width: 0;
-        text-align: center;
+        text-align: left;
     }
 
     .add-product-form .confirm-add {
@@ -606,11 +691,12 @@ body {
 
     .add-product-form .cancel-add {
         align-self: center;
+        margin-top: 4px;
     }
-
+    
     .footer-note {
-        text-align: center;
-        flex-wrap: wrap;
+        text-align: left;
+        align-items: flex-start;
     }
 }
 
@@ -627,27 +713,7 @@ body {
         font-size: 14px;
     }
     .app-container {
-        padding: 14px 10px 20px;
+        padding: 14px 12px 20px;
         border-radius: 18px;
     }
-    .product-item .weight-input,
-    .product-item .price-input {
-        max-width: 160px;
-    }
-}
-
-/* Animações suaves */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.product-item {
-    animation: fadeInUp 0.25s ease forwards;
 }
